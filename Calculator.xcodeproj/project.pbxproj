@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		032203E616B8A56400CFEC9A /* Calc Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 032203E516B8A56400CFEC9A /* Calc Button.png */; };
 		032AF95316B89495004400C0 /* Button^(u).png in Resources */ = {isa = PBXBuildFile; fileRef = 032AF95216B89495004400C0 /* Button^(u).png */; };
-		039114C216C830CF001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png in Resources */ = {isa = PBXBuildFile; fileRef = 039114C116C830CF001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png */; };
-		039114C416C830D9001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png in Resources */ = {isa = PBXBuildFile; fileRef = 039114C316C830D9001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png */; };
-		039114C816C830FF001E12D6 /* as.png in Resources */ = {isa = PBXBuildFile; fileRef = 039114C716C830FF001E12D6 /* as.png */; };
+		036D8F6B16C9512200936685 /* icon_r.png in Resources */ = {isa = PBXBuildFile; fileRef = 036D8F6916C9512200936685 /* icon_r.png */; };
+		036D8F6C16C9512200936685 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 036D8F6A16C9512200936685 /* icon.png */; };
+		036D8F6E16C9512B00936685 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 036D8F6D16C9512B00936685 /* icon.png */; };
+		036D8F7016C9512F00936685 /* icon_r.png in Resources */ = {isa = PBXBuildFile; fileRef = 036D8F6F16C9512F00936685 /* icon_r.png */; };
+		036D8F7216C9517700936685 /* calculator.png in Resources */ = {isa = PBXBuildFile; fileRef = 036D8F7116C9517700936685 /* calculator.png */; };
 		039E81AA16B89227008691BC /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 039E818616B89227008691BC /* 9.png */; };
 		039E81AB16B89227008691BC /* Button((u).png in Resources */ = {isa = PBXBuildFile; fileRef = 039E818716B89227008691BC /* Button((u).png */; };
 		039E81AC16B89227008691BC /* Button)(u).png in Resources */ = {isa = PBXBuildFile; fileRef = 039E818816B89227008691BC /* Button)(u).png */; };
@@ -67,9 +69,11 @@
 		032203E316B8A4EB00CFEC9A /* ButtonPi(u).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonPi(u).png"; sourceTree = "<group>"; };
 		032203E516B8A56400CFEC9A /* Calc Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calc Button.png"; sourceTree = "<group>"; };
 		032AF95216B89495004400C0 /* Button^(u).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button^(u).png"; sourceTree = "<group>"; };
-		039114C116C830CF001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6125736-calculator-and-pencil-icon-or-symbol-illustration.png"; sourceTree = "<group>"; };
-		039114C316C830D9001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6125736-calculator-and-pencil-icon-or-symbol-illustration.png"; sourceTree = "<group>"; };
-		039114C716C830FF001E12D6 /* as.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = as.png; path = ../as.png; sourceTree = "<group>"; };
+		036D8F6916C9512200936685 /* icon_r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_r.png; sourceTree = "<group>"; };
+		036D8F6A16C9512200936685 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		036D8F6D16C9512B00936685 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		036D8F6F16C9512F00936685 /* icon_r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_r.png; sourceTree = "<group>"; };
+		036D8F7116C9517700936685 /* calculator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calculator.png; sourceTree = "<group>"; };
 		039E818616B89227008691BC /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		039E818716B89227008691BC /* Button((u).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button((u).png"; sourceTree = "<group>"; };
 		039E818816B89227008691BC /* Button)(u).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button)(u).png"; sourceTree = "<group>"; };
@@ -189,7 +193,8 @@
 		03B5A85C16A4920F007E3F88 = {
 			isa = PBXGroup;
 			children = (
-				039114C316C830D9001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png */,
+				036D8F6F16C9512F00936685 /* icon_r.png */,
+				036D8F6D16C9512B00936685 /* icon.png */,
 				03B5A87116A4920F007E3F88 /* Calculator */,
 				03B5A86A16A4920F007E3F88 /* Frameworks */,
 				03B5A86816A4920F007E3F88 /* Products */,
@@ -230,8 +235,9 @@
 		03B5A87216A4920F007E3F88 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				039114C716C830FF001E12D6 /* as.png */,
-				039114C116C830CF001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png */,
+				036D8F7116C9517700936685 /* calculator.png */,
+				036D8F6916C9512200936685 /* icon_r.png */,
+				036D8F6A16C9512200936685 /* icon.png */,
 				03A6700016B8B214003A9D57 /* low_contrast_linen.png */,
 				039E818516B89227008691BC /* Buttons */,
 				03B5A87316A4920F007E3F88 /* Calculator-Info.plist */,
@@ -341,9 +347,11 @@
 				032203E616B8A56400CFEC9A /* Calc Button.png in Resources */,
 				03A66FFD16B8AAEE003A9D57 /* Screen.png in Resources */,
 				03A6700116B8B214003A9D57 /* low_contrast_linen.png in Resources */,
-				039114C216C830CF001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png in Resources */,
-				039114C416C830D9001E12D6 /* 6125736-calculator-and-pencil-icon-or-symbol-illustration.png in Resources */,
-				039114C816C830FF001E12D6 /* as.png in Resources */,
+				036D8F6B16C9512200936685 /* icon_r.png in Resources */,
+				036D8F6C16C9512200936685 /* icon.png in Resources */,
+				036D8F6E16C9512B00936685 /* icon.png in Resources */,
+				036D8F7016C9512F00936685 /* icon_r.png in Resources */,
+				036D8F7216C9517700936685 /* calculator.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

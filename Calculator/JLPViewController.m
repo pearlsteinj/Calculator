@@ -15,7 +15,8 @@
 @synthesize calcOutput;
 NSMutableArray *stack;
 NSString *display;
-int size; 
+int size;
+bool showingResult; 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,6 +27,7 @@ int size;
     self.view.backgroundColor = [UIColor colorWithPatternImage:patternImage];
     display = @"0";
     stack = [[NSMutableArray alloc] init];
+    showingResult = NO;
     [self updateDisplay];
     
 }
@@ -41,31 +43,34 @@ int size;
     
 }
 - (IBAction)buttonNum7:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"7"];
     }
     else
         display = @"7";
+    showingResult = NO;
     [self updateDisplay];
     
   
 }
 
 - (IBAction)buttonNum8:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"8"];
     }
     else
         display = @"8";
+    showingResult = NO;
     [self updateDisplay];
 }
 
 - (IBAction)buttonNum9:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"9"];
     }
     else
         display = @"9";
+    showingResult = NO;
     [self updateDisplay];
 }
 
@@ -93,7 +98,6 @@ int size;
     if([stack count] >1){
     NSDecimalNumber *num1 = [stack objectAtIndex:0];
         double num_1 = [num1 doubleValue];
-        NSLog(@"num1: %@", (num1.stringValue));
         [stack removeObjectAtIndex:0];
         size--;
         NSString *op = [stack objectAtIndex:0];
@@ -103,6 +107,26 @@ int size;
         double num_2 = [num2 doubleValue];
         [stack removeObjectAtIndex:0];
         size--;
+        if([stack count]>0){
+            NSString *op2 = [stack objectAtIndex:0];
+            if([op2 isEqualToString:@"/"] || [op2 isEqualToString:@"*"] || [op2 isEqualToString:@"^"]){
+                [stack removeObjectAtIndex:0];
+                size--;
+                double num_3 = [num2 doubleValue];
+                [stack removeObjectAtIndex:0];
+                size--;
+                if([op2 isEqualToString:@"/"]){
+                    num_2 = num_2 / num_3;
+                }
+                else if([op2 isEqualToString:@"*"]){
+                    num_2 = num_2 * num_3;
+                }
+                else if([op2 isEqualToString:@"^"]){
+                    num_2 = pow(num_2,num_3);
+                }
+            }
+        }
+        
         if([op isEqualToString:@"+"]){
             result = num_1 + num_2;
         }
@@ -119,6 +143,7 @@ int size;
             result = pow(num_1,num_2);
         }
     }
+    
                 while ([stack count] > 0) {
                     NSString *op = [stack objectAtIndex:0];
                     [stack removeObjectAtIndex:0];
@@ -127,6 +152,25 @@ int size;
                     double num_22 = [num2 doubleValue];
                     [stack removeObjectAtIndex:0];
                     size--;
+                    if([stack count]>0){
+                        NSString *op2 = [stack objectAtIndex:0];
+                        if([op2 isEqualToString:@"/"] || [op2 isEqualToString:@"*"] || [op2 isEqualToString:@"^"]){
+                            [stack removeObjectAtIndex:0];
+                            size--;
+                            double num_3 = [num2 doubleValue];
+                            [stack removeObjectAtIndex:0];
+                            size--;
+                            if([op2 isEqualToString:@"/"]){
+                                result = result / num_3;
+                            }
+                            else if([op2 isEqualToString:@"*"]){
+                                result = result * num_3;
+                            }
+                            else if([op2 isEqualToString:@"^"]){
+                                result = pow(result,num_3);
+                            }
+                        }
+                    }
                     if([op isEqualToString:@"+"]){
                         result = result + num_22;
                     }
@@ -146,8 +190,8 @@ int size;
             
     
     
-    NSLog(@"Result: %.2f",result);
     display = [NSString stringWithFormat:@"%.2f",result];
+    showingResult = YES;
     [self updateDisplay];
     
     }
@@ -157,6 +201,7 @@ int size;
     NSString *plus = @"+";
     [stack addObject:plus];
     display = @"+";
+    showingResult = NO;
     [self updateDisplay];
     
 }
@@ -166,6 +211,7 @@ int size;
     NSString *minus = @"—";
     [stack addObject:minus];
     display = @"—";
+    showingResult = NO;
     [self updateDisplay];
     
 }
@@ -175,6 +221,8 @@ int size;
     NSString *mult = @"*";
     [stack addObject:mult];
     display = @"*";
+    showingResult = NO;
+
     [self updateDisplay];
     
 }
@@ -184,6 +232,8 @@ int size;
     NSString *div = @"/";
     [stack addObject:div];
     display = @"/";
+    showingResult = NO;
+
     [self updateDisplay];
     
 }
@@ -198,6 +248,8 @@ int size;
     }
     else
         display = @"-";
+    showingResult = NO;
+
     [self updateDisplay];
     
 }
@@ -205,15 +257,18 @@ int size;
 - (IBAction)buttonClear:(UIButton *)sender {
     display = @"0";
     [stack removeAllObjects];
+    showingResult = NO;
     [self updateDisplay];
 }
 
 - (IBAction)buttonPi:(UIButton *)sender {
-    if([display doubleValue] != 0){
+    if(([display doubleValue] != 0) && !showingResult){
         display = [display stringByAppendingString:@"3.14159"];
     }
     else
         display = @"3.14159";
+    showingResult = NO;
+
     [self updateDisplay];
     
 }
@@ -223,6 +278,8 @@ int size;
     NSString *exp = @"^";
     [stack addObject:exp];
     display = @"^";
+    showingResult = NO;
+
     [self updateDisplay];
     
 }
@@ -232,6 +289,8 @@ int size;
     NSString *lP = @"(";
     [stack addObject:lP];
     display = @"(";
+    showingResult = NO;
+
     [self updateDisplay];
     
 }
@@ -241,79 +300,84 @@ int size;
     NSString *rP = @")";
     [stack addObject:rP];
     display = @")";
+    showingResult = NO;
     [self updateDisplay];
     
 }
 - (IBAction)buttonNum0:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"0"];
     }
     else
         display = @"0";
+    showingResult = NO;
     [self updateDisplay];
 }
 
 - (IBAction)buttonNum1:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"1"];
     }
     else
         display = @"1";
+    showingResult = NO;
     [self updateDisplay];
 }
 
 - (IBAction)buttonNum2:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"2"];
     }
     else
         display = @"2";
+    showingResult = NO;
     [self updateDisplay];
 }
 
 - (IBAction)buttonNum3:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"3"];
     }
     else
         display = @"3";
+    showingResult = NO;
     [self updateDisplay];
 }
 
 - (IBAction)buttonNum4:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"4"];
     }
     else
         display = @"4";
+    showingResult = NO;
     [self updateDisplay];
 }
 
 - (IBAction)buttonNum5:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"5"];
     }
     else
         display = @"5";
+    showingResult = NO;
     [self updateDisplay];
 }
 
 - (IBAction)buttonNum6:(UIButton *)sender {
-    if([display doubleValue] != 0 || [display isEqualToString:@"-"] || [display isEqualToString:@"0."]){
+    if(([display doubleValue] != 0 || [display isEqualToString:@"-"]|| [display isEqualToString:@"0."]) && !showingResult){
         display = [display stringByAppendingString:@"6"];
     }
     else
         display = @"6";
+    showingResult = NO;
     [self updateDisplay];
 }
 
 -(void) moveToStack {
     size++;
-    NSDecimalNumber *num = [NSDecimalNumber decimalNumberWithString:display];
-    NSLog(@"num1: %f",num.doubleValue);
-    NSLog(@"%lu", (unsigned long)[stack count]);
+    NSDecimalNumber *num = [NSDecimalNumber decimalNumberWithString:display];   
     [stack addObject:num];
-    NSLog(@"%lu", (unsigned long)[stack count]);
     display = @"";
     [self updateDisplay];
 }

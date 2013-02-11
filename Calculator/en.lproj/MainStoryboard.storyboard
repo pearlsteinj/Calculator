@@ -82,7 +82,7 @@
                                     <action selector="buttonExponent:" destination="2" eventType="touchUpInside" id="WDQ-x6-3B1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="l4D-8N-jCy">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="l4D-8N-jCy">
                                 <rect key="frame" x="168" y="76" width="65" height="57"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Button((u).png">
@@ -96,7 +96,7 @@
                                     <action selector="buttonLParenthesis:" destination="2" eventType="touchUpInside" id="NzG-jy-IP3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dXS-eh-2dP">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dXS-eh-2dP">
                                 <rect key="frame" x="240" y="76" width="65" height="57"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Button)(u).png">
